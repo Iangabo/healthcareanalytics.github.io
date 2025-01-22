@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inpatient Calculator</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+  <div class="bg-white bg-opacity-75 rounded-lg p-4">
+    <h1 class="text-5xl text-green-600 mb-4">Inpatient Calculator</h1>
+    <div class="flex flex-wrap">
+      <div class="w-full lg:w-1/2 pr-4">
+        <!-- Clinic Visit Time section -->
+        <div class="box">
+          <h1 class="text-2xl text-green-600 mb-4">Room Areas by Type</h1>
+          <table class="w-full mb-4">
+            <tr>
+              <th class="py-2">Room Type</th>
+              <th class="py-2">Area</th>
+            </tr>
+            <tr>
+              <td class="py-2">Waiting (WAIT)</td>
+              <td class="py-2"><input type="number" id="waiting" value="30.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Bay-Beverage (BBEV)</td>
+              <td class="py-2"><input type="number" id="bay-beverage" value="4.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Bay-Handwashing (BHWS)</td>
+              <td class="py-2"><input type="number" id="bay-handwashing" value="14.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Staff Station (SSTN-3P)</td>
+              <td class="py-2"><input type="number" id="staff-station" value="1.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Bay-Pneumatic Tube (BPTS)</td>
+              <td class="py-2"><input type="number" id="bay-pneumatic-tube" value="1.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Bay-Blanket/Fluid Warmer (BBW)</td>
+              <td class="py-2"><input type="number" id="bay-blanket-fluid-warmer" value="1.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Office-Single Person (OFF-1P)</td>
+              <td class="py-2"><input type="number" id="office-single-person" value="9.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Toilet-Accesible (WCAC)</td>
+              <td class="py-2"><input type="number" id="toilet-accesible" value="9.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Equipment Clean-Up (ECL)</td>
+              <td class="py-2"><input type="number" id="equipment-clean-up" value="6.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Dirty Utility (DTUR)</td>
+              <td class="py-2"><input type="number" id="dirty-utility" value="14.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Bay-Linen (BLIN)</td>
+              <td class="py-2"><input type="number" id="Bay-linen" value="14.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Bay-Resuscitation Trolley (BRES)</td>
+              <td class="py-2"><input type="number" id="bay-resuscitation-trolley" value="2.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Toilet-Staff (WCST)</td>
+              <td class="py-2"><input type="number" id="toilet-staff" value="3.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Cleaners Room  (CLRM)</td>
+              <td class="py-2"><input type="number" id="cleaner-room" value="5.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Staff-Room (WCST)</td>
+              <td class="py-2"><input type="number" id="staff-room" value="15.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Staff-Room (WCST)</td>
+              <td class="py-2"><input type="number" id="staff-room" value="15.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Bay-Mobile Equipment (BMEQ)</td>
+              <td class="py-2"><input type="number" id="bay-mobile-equipment" value="4.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Storage-General (STGN)</td>
+              <td class="py-2"><input type="number" id="storage-general" value="9.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Office-2 Person Shared (OFF-2P)</td>
+              <td class="py-2"><input type="number" id="office-2-person-shared" value="12.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Bay-Wheelchair Park (BWC)</td>
+              <td class="py-2"><input type="number" id="bay-wheelchair-park" value="4.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Store-Patient Property (STPP)</td>
+              <td class="py-2"><input type="number" id="store-patient-property" value="8.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Pharmacy-Preparation Room, Non-Aseptic (PHA-PR)</td>
+              <td class="py-2"><input type="number" id="pharmacy-preparation-room-non-aseptic" value="12.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">After Hours Drug Store (AHDR)</td>
+              <td class="py-2"><input type="number" id="after-hours-drug-store" value="5.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Consult Room (CONS)</td>
+              <td class="py-2"><input type="number" id="consult-room" value="12.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Meeting Room (CONS)</td>
+              <td class="py-2"><input type="number" id="meeting-room" value="15.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Anteroom (ANRM)</td>
+              <td class="py-2"><input type="number" id="anteroom" value="6.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">1 Bed Room-Inboard Ensuite, Type 1 (1BR-ST)</td>
+              <td class="py-2"><input type="number" id="1-bed-room-inboard-ensuite-type-1" value="16.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">1 Bed Room-Bariatric (1BR-BA)</td>
+              <td class="py-2"><input type="number" id="1-bed-room-bariatric" value="18.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">1 Bed Room-Isolation-Negative Pressure, Type 1 (1BR-IS)</td>
+              <td class="py-2"><input type="number" id="1-bed-room-isolation-negative-pressure-type-1" value="15.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">1 Bed Room-Special, Inboard Ensuite, Type 1 (1BR-SP)</td>
+              <td class="py-2"><input type="number" id="1-bed-room-special-inboard-ensuite-type-1" value="18.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Ensuite-Inboard (ENS-ST)</td>
+              <td class="py-2"><input type="number" id="ensuite-inboard" value="5.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Ensuite-Bariatric (ENS-BA)</td>
+              <td class="py-2"><input type="number" id="ensuite-bariatric" value="7.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Ensuite-Special (ENS-SP)</td>
+              <td class="py-2"><input type="number" id="ensuite-special" value="6.0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>  
+          </table>
+        </div>
+      </div>
+      <div class="w-full lg:w-1/2 pl-4">
+        <!-- Current Capacity -->
+        <div class="box">
+          <h1 class="text-2xl text-green-600 mb-4">Current Capacity</h1>
+          <table class="w-full mb-3">
+            <tr>
+              <th class="py-2">Parameter</th>
+              <th class="py-2">Value</th><cd class=""></cd>
+              <th class="py-2">Unit</th>
+            </tr>
+            <tr>
+              <td class="py-2">Average Visits per Year</td>
+              <td class="py-2"><input type="number" id="avg-visits-per-year" value="33660" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Available Days per Year</td>
+              <td class="py-2"><input type="number" id="available-days-per-year" value="0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+              <td class="py-2">Days</td>
+            </tr>
+            <tr>
+              <td class="py-2">Provider Productivity per Hour</td>
+              <td class="py-2"><input type="number" id="provider-productivity-per-hour" value="0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Available Time per Day</td>
+              <td class="py-2"><input type="number" id="available-time-per-day" value="0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+              <td class="py-2">Hours</td>
+            </tr>
+            <tr>
+              <td class="py-2">Room Utilization Target</td>
+              <td class="py-2"><input type="number" id="room-utilization-target" value="0" min="0" max="100" step="1" class="w-20 border rounded-md px-2 py-1"></td>
+              <td class="py-2">%</td>
+            </tr>
+          </table>
+          <p>Productivity Target per Day: <span id="productivity-target-per-day" class="font-bold text-lg">0.0</span></p>
+          <p>Exam Room Occupancy: <span id="exam-room-occupancy" class="font-bold text-lg">0.0</span></p>
+        </div>
+      </div>
+    </div>
+</body>
+</html>

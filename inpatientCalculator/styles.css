@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 10px;
+  font-size: 14px;
+  background-image: url('../../../../public/images/inpatientBackground.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+h1 {
+  color: green;
+  font-size: 1.9rem;
+  margin-bottom: 1rem;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 4px;
+  text-align: left;
+  border-bottom: 1px solid #bdbaba;
+}
+
+tr:hover {
+  background-color: #b9b6b6;
+}
+
+input[type="number"] {
+  width: 60px;
+  padding: 2px;
+  font-size: 0.9rem;
+}
+
+button {
+  margin-top: 5px;
+  padding: 3px 5px;
+  background-color: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: darkgreen;
+}
+
+.box {
+  background-color: white;
+  border: 1px solid #b3b0b0;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.text-blue-600 {
+  color: green;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+

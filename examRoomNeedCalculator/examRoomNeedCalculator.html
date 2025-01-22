@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exam Room Need Calculator</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+  <div class="bg-white bg-opacity-75 rounded-lg p-4">
+    <h1 class="text-5xl text-green-600 mb-4">Exam Room Need Calculator</h1>
+    <div class="flex flex-wrap">
+      <div class="w-full lg:w-1/2 pr-4">
+        <!-- Clinic Visit Time section -->
+        <div class="box">
+          <h1 class="text-2xl text-green-600 mb-4">Average Clinic Visit Time</h1>
+          <table class="w-full mb-4">
+            <tr>
+              <th class="py-2">Parameter</th>
+              <th class="py-2">Time</th>
+              <th class="py-2">Unit</th>
+            </tr>
+            <tr>
+              <td class="py-2">Average MA Visit Time</td>
+              <td class="py-2"><input type="number" id="avg-ma-visit-time" value="0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+              <td class="py-2">minutes</td>
+            </tr>
+            <tr>
+              <td class="py-2">Average Wait Time in Exam</td>
+              <td class="py-2"><input type="number" id="avg-wait-time-in-exam" value="0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+              <td class="py-2">minutes</td>
+            </tr>
+            <tr>
+              <td class="py-2">Average Provider Visit Time</td>
+              <td class="py-2"><input type="number" id="avg-provider-visit-time" value="0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+              <td class="py-2">minutes</td>
+            </tr>
+          </table>
+          <p>Average Clinic Visit Time: <span id="total-visit-time" class="font-bold text-lg">0.0</span> minutes</p>
+        </div>
+      </div>
+      <div class="w-full lg:w-1/2 pl-4">
+        <!-- Current Capacity -->
+        <div class="box">
+          <h1 class="text-2xl text-green-600 mb-4">Current Capacity</h1>
+          <table class="w-full mb-3">
+            <tr>
+              <th class="py-2">Parameter</th>
+              <th class="py-2">Value</th><cd class=""></cd>
+              <th class="py-2">Unit</th>
+            </tr>
+            <tr>
+              <td class="py-2">Average Visits per Year</td>
+              <td class="py-2"><input type="number" id="avg-visits-per-year" value="33660" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Available Days per Year</td>
+              <td class="py-2"><input type="number" id="available-days-per-year" value="0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+              <td class="py-2">Days</td>
+            </tr>
+            <tr>
+              <td class="py-2">Provider Productivity per Hour</td>
+              <td class="py-2"><input type="number" id="provider-productivity-per-hour" value="0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+            </tr>
+            <tr>
+              <td class="py-2">Available Time per Day</td>
+              <td class="py-2"><input type="number" id="available-time-per-day" value="0" min="0" step="0.1" class="w-20 border rounded-md px-2 py-1"></td>
+              <td class="py-2">Hours</td>
+            </tr>
+            <tr>
+              <td class="py-2">Room Utilization Target</td>
+              <td class="py-2"><input type="number" id="room-utilization-target" value="0" min="0" max="100" step="1" class="w-20 border rounded-md px-2 py-1"></td>
+              <td class="py-2">%</td>
+            </tr>
+          </table>
+          <p>Productivity Target per Day: <span id="productivity-target-per-day" class="font-bold text-lg">0.0</span></p>
+          <p>Exam Room Occupancy: <span id="exam-room-occupancy" class="font-bold text-lg">0.0</span></p>
+        </div>
+      </div>
+    </div>
+    <!-- Calculations section -->
+    <div class="w-full mt-4">
+      <div class="box">
+        <h1 class="text-2xl text-green-600 mb-4">Calculations</h1>
+        <div class="box">
+          <div id="demand-capacity-options" class="mt-2 flex items-center">
+            <span id="dcpp-average" class="highlighted-text mr-4">
+              DCPP_Average
+            </span>
+            <span class="description">
+              Demand and capacity, per provider productivity using average patient volume data.
+            </span>
+          </div>
+          <div id="dcpp-average-results" class="mt-4">
+            <label for="year-select">Select Year:</label>
+            <select id="year-select" class="w-32 border rounded-md px-2 py-1">
+              <!-- Options will be generated dynamically -->
+            </select>
+            <table class="w-full mb-4">
+              <tr>
+                <th class="py-2">Parameter</th>
+                <th class="py-2">Value</th>
+              </tr>
+              <tr>
+                <td class="py-2 required-providers">Required Providers <span class="info-icon" data-tooltip="Required Providers = (avgVisitsPerYear / availableDaysPerYear) / providerProductivityPerDay">i</span></td>
+                <td class="py-2"><span id="required-providers">0.0</span></td>
+              </tr>
+              <tr>
+                <td class="py-2">Required Providers Rounded <span class="info-icon" data-tooltip="Required Providers Rounded = Math.ceil(Required Providers)">i</span></td>
+                <td class="py-2"><span id="required-providers-rounded">0</span></td>
+              </tr>
+              <tr>
+                <td class="py-2">Department Productivity Target <span class="info-icon" data-tooltip="Department Productivity Target = providerProductivityPerDay * requiredProvidersRounded">i</span></td>
+                <td class="py-2"><span id="department-productivity-target">0.0</span></td>
+              </tr>
+              <tr>
+                <td class="py-2">Required Exam Rooms <span class="info-icon" data-tooltip="Required Exam Rooms = Math.ceil(departmentProductivityTarget / examRoomOccupancy)">i</span></td>
+                <td class="py-2"><span id="required-exam-rooms">0.0</span></td>
+              </tr>
+              <tr>
+                <td class="py-2 required-exam-rooms-per-provider">Required Exam Rooms per Provider <span class="info-icon" data-tooltip="Required Exam Rooms per Provider = (requiredExamRooms / requiredProvidersRounded)">i</span></td>
+                <td class="py-2"><span id="required-exam-rooms-per-provider">0.0</span></td>
+              </tr>
+              <tr>
+                <td class="py-2 visits-per-provider-per-year">Visits per Provider per Year <span class="info-icon" data-tooltip="Visits per Provider per Year = (avgVisitsPerYear / requiredProvidersRounded)">i</span></td>
+                <td class="py-2"><span id="visits-per-provider-per-year">0.0</span></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="chart">
+    <div class="box">
+      <h1 class="text-2xl text-green-600 mb-4">Threejs Graphs</h1>
+    </div>
+  </div>
+  <div class="w-1/3 pl-4" id="legend">
+    <div class="box bg-white bg-opacity-75 rounded-lg p-4">
+      <h2 class="text-xl text-green-600 mb-4">Legend</h2>
+      <ul id="legend-list">
+        <!-- Leyend will be added here dynamically -->
+      </ul>
+    </div>
+  </div>
+</div>
+  <script src="examRoomNeedCalculator.js"></script>
+  <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script type="module" src="graphs.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 10px;
+  font-size: 14px;
+  background-image: url('../../../../public/images/examRoomNeedCalcBackground.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+h1 {
+  color: green;
+  font-size: 1.9rem;
+  margin-bottom: 1rem;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 4px;
+  text-align: left;
+  border-bottom: 1px solid #bdbaba;
+}
+
+tr:hover {
+  background-color: #b9b6b6;
+}
+
+input[type="number"] {
+  width: 60px;
+  padding: 2px;
+  font-size: 0.9rem;
+}
+
+button {
+  margin-top: 5px;
+  padding: 3px 5px;
+  background-color: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: darkgreen;
+}
+
+.box {
+  background-color: white;
+  border: 1px solid #b3b0b0;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.text-blue-600 {
+  color: green;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+#demand-capacity-options button {
+  padding: 4px 8px;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#demand-capacity-options button:hover {
+  background-color: green;
+}
+
+.info-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  text-align: center;
+  font-size: 10px;
+  line-height: 16px;
+  margin-left: 3px;
+  cursor: pointer;
+  position: relative;
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  background-color: rgb(105, 104, 104);
+  color: white;
+  text-align: center;
+  padding: 3px;
+  border-radius: 3px;
+  top: 20px;
+  left: 0;
+  font-size: 11px; 
+  white-space: nowrap; 
+  z-index: 1;
+}
+
+.info-icon:hover .tooltip {
+  display: block;
+}
+
+.required-providers {
+  background-color: rgb(131, 153, 131)
+}
+
+.required-exam-rooms-per-provider {
+  background-color: rgb(131, 153, 131)
+}
+
+.visits-per-provider-per-year {
+  background-color: rgb(131, 153, 131)
+}
+
+.bar {
+  fill: rgb(104, 145, 104); 
+}
+
+#chart {
+  width: 100%;
+  height: 600px; 
+}
+
+.highlighted-text {
+  background-color: green;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;  
+  display: inline-block;
+}
