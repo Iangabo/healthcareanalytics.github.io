@@ -6,7 +6,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 10px;
   font-size: 14px;
-  background-image: url('../../../../public/images/examRoomNeedCalcBackground.jpg');
+  background-image: url('examRoomNeedCalcBackground.jpg');
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
